@@ -36,38 +36,48 @@ const Services = () => {
 			<div className="container mx-auto">
 				<div className="flex flex-col lg:flex-row">
 					{/* text */}
-					<div className="flex-1 lg:bg-services lg:bg-bottom bg-no-repeat mix-blend-lighten mb-12 lg:mb-0">
+					<motion.div 
+					variants={fadeIn('right',0.3)}
+					initial="hidden"
+					whileInView={"show"}
+					viewport={{once:false, amount:0.3}}
+					className="flex-1 lg:bg-services lg:bg-bottom bg-no-repeat mix-blend-lighten mb-12 lg:mb-0">
 						<h2 className="h2 text-accent mb-6"> What I Do</h2>
 						<h3 className="h3 max-w-[455px] mb-16">
 							Driving my passion for design, technology, and automobiles
 							forward.
 						</h3>
 						<button className="btn btn-sm"> Take a look at my work </button>
-					</div>
+					</motion.div>
 					{/* services */}
-					<div className="flex-1">
+					<motion.div
+					variants={fadeIn('left',0.3)}
+					initial="hidden"
+					whileInView={"show"}
+					viewport={{once:false, amount:0.3}}
+					className="flex-1">
 						{/* service list */}
 						<div>
 							{services.map((service, index) => {
-                //Destructuring Service
-                const {name, description, link} = service;
+								//Destructuring Service
+								const { name, description, link } = service;
 								return (
-									<div className="border-b border-white/20 h-[190px] mb-[20px] flex" key={{index}}>
+									<div className="border-b border-white/20 h-[190px] mb-[20px] flex" key={{ index }}>
 										<div className="max-w-[476px]">
 											<h4 className="text-[20px] tracking-wider font-primary font-semibold mb-4">{name}</h4>
-                      <p className="font-secondary mb-4 leading-tight">{description}</p>
+											<p className="font-secondary mb-4 leading-tight">{description}</p>
 										</div>
-										<div>
-                      <a href="#">
-                        <BsArrowUpRight/>
-                      </a>
-                      <a href="#">{link}</a>
-                    </div>
+										<div className="flex flex-col flex-1 items-end">
+											<a className="btn w-9 h-9 mb-[42px] flex justify-center items-center" href="#">
+												<BsArrowUpRight />
+											</a>
+											<a className="text-gradient text-sm" href="#">{link}</a>
+										</div>
 									</div>
 								);
 							})}
 						</div>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</section>
